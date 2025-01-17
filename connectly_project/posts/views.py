@@ -19,7 +19,10 @@ def create_user(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            user = User.objects.create(username=data['username'], email=data['email'])
+            user = User(username=data['username'], email=data['email'])
+            user.full_clean()
+            user.save()
+            # user = User.objects.create(username=data['username'], email=data['email'])
             return JsonResponse({'id': user.id, 'message': 'User created successfully'}, status=201)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
