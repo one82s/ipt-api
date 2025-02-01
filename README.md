@@ -241,11 +241,15 @@
 
 ## Branch 4 instructions
 1. Check out branch-week4-demo branch
-2. Run the python command below install Django argon2 password hasher 
+2. Run the python command below to install Django argon2 password hasher 
     pip install django[argon2]
-3.  Run the python command below install bcrypt for pasword salting
+3.  Run the python command below to install bcrypt for pasword salting
     pip install bcrypt
-4. Run the python command below install Django SSL server
+4. Run the python command below to install Django SSL server
     pip install django-sslserver
-5. Running the server
+5. Migrate additional extensions
+    a. python manage.py makemigrations posts
+    b. python manage.py migrate
+6. Running the server
     python manage.py runsslserver —-certificate cert.pem —-key key.pem
+
