@@ -8,7 +8,7 @@ import bcrypt
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import User, Post, Comment, Singleton, PasswordSingleton
+from .models import User, Post, Comment, PasswordSingleton, PasswordClass, PasswordFactory
 from .serializers import UserSerializer, PostSerializer, CommentSerializer
 from django.contrib.auth.hashers import make_password, check_password 
 
@@ -23,14 +23,31 @@ class UserListCreate(APIView):
         # Singleton usage
         passwordSingleton1 = PasswordSingleton("mypassword123")
         passwordSingleton2 = PasswordSingleton("mypassword1234")
-        print(passwordSingleton1.password)
-        print(passwordSingleton2.password)
-        print(passwordSingleton1 is passwordSingleton1) 
+        print('First singleton password is: ', passwordSingleton1.password)
+        print('Second singleton password is: ', passwordSingleton2.password)
+        print('Are they the same? ', passwordSingleton1 is passwordSingleton1) 
+        # Explanation:
         # passwordSingleton1 and passwordSingleton2 are both created using the PasswordSingleton class.
         # Even though different arguments are passed, both variables will point to the same instance because of the Singleton pattern.
         # print(passwordSingleton1.password): Outputs "mypassword123" because that was the argument passed during the first instance creation.
         # print(passwordSingleton2.password): Outputs "mypassword123" because it will always be the same instance, and the message will be the one provided when the first instance is created.
 
+        #Factory pattern usage
+        factory = PasswordFactory()
+        factory.register_class('password', PasswordClass)
+
+        firstPassword = factory.create_instance('password', 'mypassword123')
+        secondPassword = factory.create_instance('password', 'mypassword123456')
+        print('First password from factory is: ', firstPassword.password)
+        print('Second password from factory is: ', secondPassword.password)
+        print('Are they the same? ', firstPassword is secondPassword)
+        # Explanation:
+        # An instance of PasswordFactory is created.
+        # The PasswordClass class is registered with the factory using the key "password".
+        # Instances are created using the create_instance method of the factory, each with different messages.
+        # print('First password from factory is: ', firstPassword.password): Outputs "mypassword123".
+        # print('Second password from factory is: ', secondPassword.password): Outputs "mypassword123456".
+        # print('Are they the same? ', firstPassword is secondPassword): Outputs False, indicating firstPassword and secondPassword are different instances.
 
 
 

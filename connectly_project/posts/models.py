@@ -63,3 +63,25 @@ class PasswordSingleton(metaclass=Singleton):
     # Initializes the instance with a password attribute.
     def __init__(self, password):
         self.password = password
+
+# __init__ method that takes a password argument and stores it as an instance attribute.
+class PasswordClass:
+    def __init__(self, password):
+            self.password = password
+
+# This is the Factory class that is responsible for creating instances of classes.
+# _creators dictionary: Stores the creators (constructors) of the registered classes.
+# register_class method: Registers a class with the factory by associating it with a key.
+# create_instance method: Creates an instance of the registered class using the provided key and arguments.
+class PasswordFactory:
+    def __init__(self):
+        self._creators = {}
+
+    def register_class(self, key, creator):
+        self._creators[key] = creator
+
+    def create_instance(self, key, *args, **kwargs):
+        creator = self._creators.get(key)
+        if not creator:
+            raise ValueError(f"Class not registered for key: {key}")
+        return creator(*args, **kwargs)
