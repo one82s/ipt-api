@@ -8,7 +8,7 @@ import bcrypt
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import User, Post, Comment
+from .models import User, Post, Comment, Singleton, PasswordSingleton
 from .serializers import UserSerializer, PostSerializer, CommentSerializer
 from django.contrib.auth.hashers import make_password, check_password 
 
@@ -18,6 +18,22 @@ class UserListCreate(APIView):
     def get(self, request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
+
+        # Week 5 demo
+        # Singleton usage
+        passwordSingleton1 = PasswordSingleton("mypassword123")
+        passwordSingleton2 = PasswordSingleton("mypassword1234")
+        print(passwordSingleton1.password)
+        print(passwordSingleton2.password)
+        print(passwordSingleton1 is passwordSingleton1) 
+        # passwordSingleton1 and passwordSingleton2 are both created using the PasswordSingleton class.
+        # Even though different arguments are passed, both variables will point to the same instance because of the Singleton pattern.
+        # print(passwordSingleton1.password): Outputs "mypassword123" because that was the argument passed during the first instance creation.
+        # print(passwordSingleton2.password): Outputs "mypassword123" because it will always be the same instance, and the message will be the one provided when the first instance is created.
+
+
+
+
         
         hashed_password = make_password("mypassword123")
         print(hashed_password)  # Outputs a hashed version of the password

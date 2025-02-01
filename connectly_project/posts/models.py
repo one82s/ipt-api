@@ -46,3 +46,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.author.username} on Post {self.post.id}"
+    
+
+# This class is a metaclass (a class of a class) that ensures only one instance of any class using it as a metaclass can exist.
+class Singleton(type):
+    # dictionary: Stores instances of the classes.
+    _instances = {}
+    # method: When an instance is created, it checks if the class has already an instance. If not, it creates and stores a new instance. If yes, it returns the existing instance.    
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+# uses Singleton as its metaclass, meaning it will only ever have one instance.
+class PasswordSingleton(metaclass=Singleton):
+    # Initializes the instance with a password attribute.
+    def __init__(self, password):
+        self.password = password
