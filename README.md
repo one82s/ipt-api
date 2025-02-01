@@ -240,7 +240,7 @@
 
 
 ## Branch 4 instructions
-1. Check out branch-wee4-demo branch
+1. Check out branch-week4-demo branch
 2. Run the python command below install Django argon2 password hasher 
     pip install django[argon2]
 3.  Run the python command below install bcrypt for pasword salting
