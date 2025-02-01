@@ -236,3 +236,16 @@
    }
    d. Test DELETE /posts/users/delete/
    **example**: http://127.0.0.1:8000/posts/users/delete/2/
+
+
+
+## Branch 4 instructions
+1. Check out branch-wee4-demo branch
+2. Run the python command below install Django argon2 password hasher 
+    pip install django[argon2]
+3.  Run the python command below install bcrypt for pasword salting
+    pip install bcrypt
+4. Run the python command below install Django SSL server
+    pip install django-sslserver
+5. Running the server
+    python manage.py runsslserver —-certificate cert.pem —-key key.pem
