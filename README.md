@@ -5,25 +5,25 @@
 1. Create a folder where you will place the **connectly_project**, for this demo we will call it api
 2. Check if Python is Installed
    Run the following command in your terminal:
-   python --version
+   *** python --version ***
    This should display the installed Python version (e.g., Python 3.10.5).
    If not, download and install the latest version of Python from python.org.
 3. Install pip **(don’t skip this step)**
    Ensure pip (Python's package manager) is installed:
-   pip --version
+   *** pip --version *** 
    If not, install it using:
-   python -m ensurepip --upgrade
+   ***  python -m ensurepip --upgrade *** 
 4. Set Up a Virtual Environment **(don’t skip this step)**
    a. A virtual environment keeps your project dependencies isolated from the global Python environment.
    b. Create the Virtual Environment
    i. Navigate to your project folder in the terminal and run:
-   python -m venv env
+   ***  python -m venv env *** 
    This creates a virtual environment named env.
 5. Activate the Virtual Environment:
    On Windows:
-   .\env\Scripts\activate
+   ***  .\env\Scripts\activate *** 
    On MacOS/Linux:
-   source env/bin/activate
+   *** source env/bin/activate *** 
 6. Verify the Virtual Environment
    python --version
    You should see the same Python version, but the terminal prompt will include (env) to indicate the environment is active.
@@ -35,28 +35,28 @@
 
     a. Install Django:
     Run:
-    pip install django
+    *** pip install django *** 
     b. Verify the installation:
     django-admin --version
 
     c. Install Django REST Framework (DRF)
     Run:
-    pip install djangorestframework
+   ***   pip install djangorestframework *** 
 
 3.  Install the required tools for testing and admin functionality:
 
-    pip install djangorestframework-simplejwt
-    pip install django-cors-headers
+    *** pip install djangorestframework-simplejwt *** 
+    *** pip install django-cors-headers *** 
 
 4.  Create the Django Project
     a. Run the following command to create a Django project named connectly_project:
-    django-admin startproject connectly_project
+    *** django-admin startproject connectly_project *** 
 5.  Navigate to the Project Directory
-    cd connectly_project
+    *** cd connectly_project *** 
 6.  This will generate the necessary project files, including settings.py.
 7.  Configure Django REST Framework
     a. Add rest_framework to Installed Apps:
-    i. Open connectly_project/settings.py and add 'rest_framework' to the INSTALLED_APPS list:
+    *** i. Open connectly_project/settings.py and add 'rest_framework' to the INSTALLED_APPS list: *** 
     INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,10 +72,10 @@
 
 9.  Run Initial Migrations:
     a. Migrations are a way to apply database schema changes, creating tables for your models in the database based on your configurations:
-    python manage.py migrate
+    ***  python manage.py migrate *** 
 10. Verify Django REST Framework Setup
     a. Create Basic URL Routes:
-    b. Open connectly_project/urls.py and add a route for the DRF browsing interface:
+    *** b. Open connectly_project/urls.py and add a route for the DRF browsing interface: *** 
 
         from django.contrib import admin
         from django.urls import path, include
@@ -95,10 +95,10 @@
 ## Configuring Models
 
 1.  Navigate to connectly_project directory
-    cd connectly_project
+    *** cd connectly_project *** 
 2.  Create the posts App
     a. In the terminal, create the app:
-    python manage.py startapp posts
+    *** python manage.py startapp posts *** 
     b. Register the app in connectly_project/settings.py:
     INSTALLED_APPS = [
     ...,
@@ -122,9 +122,9 @@
 ## Apply Migrations
 
 1. Open new terminal in VS Code and create migration files: (don’t skip this step)
-   python manage.py makemigrations
+   *** python manage.py makemigrations *** 
 2. Apply the migrations:
-   python manage.py migrate
+   *** python manage.py migrate *** 
 
 ## Defining CRUD Operations in Views
 
@@ -187,7 +187,7 @@
 ## Mapping URLs to Endpoints
 
 1.  Create a **urls.py** File for the posts App
-    a. In posts/urls.py, define the URL patterns for the views.
+    *** a. In posts/urls.py, define the URL patterns for the views. *** 
 
         from django.urls import path
         from . import views
@@ -200,7 +200,7 @@
         ]
 
 2.  Include posts App URLs in the Project
-    a. Update connectly_project/urls.py to include the posts app URLs.
+    *** a. Update connectly_project/urls.py to include the posts app URLs. *** 
     from django.contrib import admin
     from django.urls import path, include
 
@@ -242,21 +242,25 @@
 ## Branch 4 instructions
 1. Check out branch-week4-demo branch
 2. Run the python command below to install Django argon2 password hasher 
-    pip install django[argon2]
+    *** pip install django[argon2] *** 
 3.  Run the python command below to install bcrypt for pasword salting
-    pip install bcrypt
+    *** pip install bcrypt *** 
 4. Run the python command below to install Django SSL server
-    pip install django-sslserver
+    *** pip install django-sslserver *** 
 5. Migrate additional extensions
-    a. python manage.py makemigrations posts
-    b. python manage.py migrate
+    *** a. python manage.py makemigrations posts *** 
+    *** b. python manage.py migrate *** 
 6. Running the server
-    python manage.py runsslserver —-certificate cert.pem —-key key.pem
+    *** python manage.py runsslserver —-certificate cert.pem —-key key.pem *** 
 
 ## Branch 7 instructions
 1. Check out branch-week7-demo branch
 2. Follow instructions in https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#requirements
-3. Go through the updated
+3. Go through the updated files
+4. Create a Superuser
+    *** python manage.py createsuperuser ***
+    *** fill out the needed information in the command prompt ***
+5. Run the server
 
 ## Branch 7b instructions
 1. Check out branch-week7b-demo branch
