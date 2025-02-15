@@ -253,3 +253,46 @@
 6. Running the server
     python manage.py runsslserver —-certificate cert.pem —-key key.pem
 
+## Branch 7 instructions
+1. Check out branch-week7-demo branch
+2. Follow instructions in https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#requirements
+3. Go through the updated
+
+## Branch 7b instructions
+1. Check out branch-week7b-demo branch
+
+## Set up an App in Google Developer Console
+You need to set up an app in Google Console to enable users of your application authenticate with Google. The process involves two steps:
+
+1. Configuring an OAuth consent screen
+2. Setting up Credentials
+## OAuth consent screen
+1. Visit Google developer console. https://console.cloud.google.com/
+2. Create a new project with a suitable name from the dropdown menu.Google developer console home window
+3. Select to use the project you have just created from the dropdown menu.
+4. In the displayed window, select OAuth consent screen and select the External option, then hit Create.Google developer console OAuth2 consent screen
+5. Fill in only the App information and Developer information details under Oauth2 consent screen.
+6. Click on Save and continue.
+7. Click on Save and continue button for both Scopes and Test users forms without filling in anything.
+8. Confirm your Oauth2 details in the Summary section then click on Back to dashboard.
+
+## Set up Credentials
+1. Locate Credentials under APIs and Services
+2. Click on Create Credentials and select OAuth Client ID from the dropdown options.The credentials screen in Google developer console
+3. Select Web application for the Application type field. You could use the default name under the Name field or provide a suitable name.
+4. Select ADD URI under Authorized JavaScript Origins to add a Uniform Resource Identifier (URI).
+    http://127.0.0.1:8000
+5. Select ADD URI under Authorized Redirect URIs and add the following URI:
+    http://127.0.0.1:8000/google/login/callback/
+
+Info:This is the callback URL where Google will redirect to after a user grants or denies your application permission to authenticate with their Google account.
+6. Hit the Create button and wait for a few seconds for your app to be ready. Your new app will generate a Client ID and Client secret. In the resulting window, download the JSON for these details or copy and paste the Client   ID and Client secret somewhere. You will need these details.
+
+## Testing in Postman
+1. Configure OAuth 2.0 Authentication**
+2. Go to the "Authorization" tab.
+3. Choose "OAuth 2.0" from the dropdown menu.
+4. Fill out the required fields such as "Client ID", "Client Secret", "Scope", "Auth URL", "Access Token URL", and "Callback URL"
+    *** "Callback URL" is the same value of Authorized Redirect URIs in Step 5 of Set up Credentials ***
+    *** "Auth URL" and "Access Token URL" are provided in the downloaded file in Step 6 of Set up Credentials ***
+5. Click on "Get New Access Token"
