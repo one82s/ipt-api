@@ -253,3 +253,7 @@
 6. Running the server
     python manage.py runsslserver —-certificate cert.pem —-key key.pem
 
+## Branch 7 instructions
+1. Check out branch-week4-demo branch
+2. Follow instructions in https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#requirements
+3. Go through the updated files 
