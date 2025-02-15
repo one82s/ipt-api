@@ -31,11 +31,14 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    # content = models.TextField(max_length=400, null=False)
+    # author = models.TextField(max_length=100, null=False)
+    # created_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
-        return f"Post by {self.author.username} at {self.created_at}"
-
+        return self.author
+    
 
 class Comment(models.Model):
     text = models.TextField()

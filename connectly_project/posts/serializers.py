@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    comments = serializers.StringRelatedField(many=True, read_only=True)
+    # comments = serializers.StringRelatedField(many=True, read_only=True)
 
 
     class Meta:
