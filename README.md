@@ -300,3 +300,35 @@ Info:This is the callback URL where Google will redirect to after a user grants 
     *** "Callback URL" is the same value of Authorized Redirect URIs in Step 5 of Set up Credentials ***
     *** "Auth URL" and "Access Token URL" are provided in the downloaded file in Step 6 of Set up Credentials ***
 5. Click on "Get New Access Token"
+
+## Branch 7 instructions
+1. Check out branch-week8-demo branch
+2. Page number pagination set-up
+    REST_FRAMEWORK = {
+        ...
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        'PAGE_SIZE': 5
+        ...
+    }
+3. Filter API guide
+    a. To use DjangoFilterBackend, first install django-filter
+    *** pip install django-filter ***
+4. Add 'django_filters' to Django's INSTALLED_APPS
+    
+    INSTALLED_APPS = [
+        ...
+        'django_filters',
+        ...
+    ]
+5. Add the filter backend in settings.py
+    REST_FRAMEWORK = {
+        ...
+        'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+        ...
+    }
+6. Add the filter backend to an individual View or ViewSet.
+    *** see updates in views.py ***
+7. Import filters from rest_framework
+    *** from rest_framework import filters ***
+8. Add ordering_fields to an individual View or ViewSet.
+    *** see updates in views.py ***
