@@ -8,7 +8,7 @@ import bcrypt
 import django_filters.rest_framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, generics
+from rest_framework import status, generics, filters
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from .models import User, Post, Comment, PasswordSingleton, PasswordClass, PasswordFactory
 from .serializers import UserSerializer, PostSerializer, CommentSerializer
@@ -91,8 +91,10 @@ class PostListCreate(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = ([IsAuthenticatedOrReadOnly])
-    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['content']
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['id','content']
+    search_fields = ['id','content']
+    ordering_fields = ['id','content', 'created_at']
     # def get(self, request):
     #     posts = Post.objects.all()
     #     serializer = PostSerializer(posts, many=True)
