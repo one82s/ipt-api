@@ -5,6 +5,7 @@
 # from django.http import JsonResponse
 # from .models import User
 import bcrypt
+import django_filters.rest_framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
@@ -90,6 +91,8 @@ class PostListCreate(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = ([IsAuthenticatedOrReadOnly])
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['content']
     # def get(self, request):
     #     posts = Post.objects.all()
     #     serializer = PostSerializer(posts, many=True)
