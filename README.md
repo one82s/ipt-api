@@ -301,7 +301,7 @@ Info:This is the callback URL where Google will redirect to after a user grants 
     *** "Auth URL" and "Access Token URL" are provided in the downloaded file in Step 6 of Set up Credentials ***
 5. Click on "Get New Access Token"
 
-## Branch 7 instructions
+## Branch 8 instructions
 1. Check out branch-week8-demo branch
 2. Page number pagination set-up
     REST_FRAMEWORK = {
