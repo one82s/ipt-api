@@ -332,3 +332,7 @@ Info:This is the callback URL where Google will redirect to after a user grants 
     *** from rest_framework import filters ***
 8. Add ordering_fields to an individual View or ViewSet.
     *** see updates in views.py ***
+
+## Branch 10 instructions
+1. Check out branch-week10-demo branch
+2. Caching implementation can be seen in views.py
